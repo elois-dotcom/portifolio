@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mutaboba Elois — UI/UX Designer</title>
+<meta name="description" content="Mutaboba Elois, UI/UX designer working across web and mobile — booking platforms, marketing email, AR ordering, transit tracking, and logistics apps.">
+
+<!-- Fonts: Fraunces for display, Inter for UI/body -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:      '#12152B',
+          paper:    '#F7F6F1',
+          blue:     '#1B4FD1',
+          gold:     '#F2B705',
+          green:    '#1D6B4A',
+          charcoal: '#4A4D5C',
+          line:     '#E4E1D6',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #F7F6F1; }
+
+  /* Reveal-on-scroll: one quiet fade/rise, not per-card bounce */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  :focus-visible {
+    outline: 2px solid #1B4FD1;
+    outline-offset: 3px;
+  }
+
+  .imigongo-line { stroke-dasharray: 900; stroke-dashoffset: 900; animation: draw 1.8s ease forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .imigongo-line { stroke-dashoffset: 0; animation: none; }
+  }
+</style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 bg-paper/90 backdrop-blur border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display text-lg font-semibold tracking-tight">Mutaboba Elois</a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm text-charcoal">
+      <a href="#work" class="hover:text-ink transition-colors">Work</a>
+      <a href="#about" class="hover:text-ink transition-colors">About</a>
+      <a href="#contact" class="hover:text-ink transition-colors">Contact</a>
+      <a href="mailto:mutabobaelois@gmail.com" class="inline-flex items-center px-4 py-2 rounded-full bg-ink text-paper hover:bg-blue transition-colors">Email me</a>
+    </nav>
+
+    <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="md:hidden p-2 -mr-2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="md:hidden hidden flex-col border-t border-line bg-paper">
+    <a href="#work" class="px-6 py-3 text-sm border-b border-line">Work</a>
+    <a href="#about" class="px-6 py-3 text-sm border-b border-line">About</a>
+    <a href="#contact" class="px-6 py-3 text-sm border-b border-line">Contact</a>
+    <a href="mailto:mutabobaelois@gmail.com" class="px-6 py-3 text-sm text-blue font-medium">Email me</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="pt-16">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 grid md:grid-cols-5 gap-10 md:gap-6 py-16 md:py-24 items-center">
+
+    <div class="md:col-span-3">
+      <p class="text-sm text-blue font-medium mb-5">UI/UX designer, based in Kigali</p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight">
+        I design mobile and web products that hold up once real people start tapping on them.
+      </h1>
+      <p class="mt-6 text-lg text-charcoal max-w-xl leading-relaxed">
+        Five years of interfaces designed end-to-end in Figma — booking platforms, ordering
+        experiences, logistics tools — built to survive contact with actual users, not just a
+        client review call.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#work" class="inline-flex items-center px-5 py-3 rounded-full bg-ink text-paper text-sm font-medium hover:bg-blue transition-colors">See the work</a>
+        <a href="mailto:mutabobaelois@gmail.com" class="inline-flex items-center px-5 py-3 rounded-full border border-ink text-sm font-medium hover:border-blue hover:text-blue transition-colors">mutabobaelois@gmail.com</a>
+      </div>
+    </div>
+
+    <!-- Decorative geometric panel, referencing Imigongo triangle patterning -->
+    <div class="md:col-span-2">
+      <div class="aspect-[4/5] rounded-2xl bg-ink relative overflow-hidden">
+        <svg viewBox="0 0 300 375" class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
+          <rect width="300" height="375" fill="#12152B"/>
+          <polygon points="0,0 150,187 0,375" fill="#1B4FD1" opacity="0.9"/>
+          <polygon points="150,0 300,0 150,187" fill="#F2B705" opacity="0.9"/>
+          <polygon points="150,187 300,0 300,187" fill="#1D6B4A" opacity="0.85"/>
+          <polygon points="150,187 300,187 300,375" fill="#1B4FD1" opacity="0.6"/>
+          <polygon points="150,187 300,375 150,375" fill="#F2B705" opacity="0.5"/>
+          <g fill="none" stroke="#F7F6F1" stroke-width="1.5" opacity="0.55">
+            <path class="imigongo-line" d="M0 0 L150 187 L0 375"/>
+            <path class="imigongo-line" d="M150 0 L300 0 L150 187 Z"/>
+            <path class="imigongo-line" d="M150 187 L300 0 L300 187 Z"/>
+            <path class="imigongo-line" d="M150 187 L300 187 L300 375"/>
+            <path class="imigongo-line" d="M150 187 L300 375 L150 375"/>
+          </g>
+        </svg>
+      </div>
+      <p class="mt-3 text-xs text-charcoal">Pattern language borrowed from Imigongo geometric art.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section id="work" class="border-t border-line">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+
+    <div class="reveal flex items-end justify-between flex-wrap gap-4 mb-14">
+      <h2 class="font-display text-3xl md:text-4xl tracking-tight">Featured work</h2>
+      <p class="text-charcoal text-sm max-w-sm">Five projects, five different problems — a dance troupe's bookings, a rider's next bus, a diner's order, a shipment's route.</p>
+    </div>
+
+    <!-- Project 1: Inyamibwa -->
+    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-line">
+      <div class="rounded-xl overflow-hidden bg-white border border-line shadow-sm">
+        <div class="h-8 bg-ink/5 border-b border-line flex items-center gap-1.5 px-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+        </div>
+        <!-- Replace src below with your exported Inyamibwa screenshot -->
+        <img src="images/inyamibwa.jpg" alt="Inyamibwa booking site interface" class="w-full aspect-[16/10] object-cover object-top bg-line">
+      </div>
+      <div>
+        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-blue/10 text-blue mb-4">Web · Booking platform</span>
+        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">Inyamibwa</h3>
+        <p class="text-charcoal leading-relaxed mb-5">
+          A booking site for a traditional dance troupe. The old process ran through phone calls
+          and word of mouth, so clients often couldn't tell what the troupe did or when they were
+          free. I designed a site that shows upcoming performances and lets clients request a
+          booking without a phone call.
+        </p>
+        <a href="https://www.figma.com/design/bS85oK6VQLIc3aoTbX7HX7/Inyamibwa?node-id=0-1&t=T8QWTO6YnweXm5Oe-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
+          View in Figma
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 2: Bus Tracking -->
+    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-line">
+      <div class="order-2 md:order-1">
+        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-green/10 text-green mb-4">Mobile · Transit app</span>
+        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">Bus tracking app</h3>
+        <p class="text-charcoal leading-relaxed mb-5">
+          A mobile app for tracking buses in real time, so riders stop guessing when the next one
+          actually arrives. Alongside tracking, I designed a lost-and-found flow — riders can log
+          an item they've lost or found on a route and match it against the same trip.
+        </p>
+          <a href="https://www.figma.com/design/C0M51t546t26TCjwUYbx5S/AR-menu?node-id=78-2&t=CeFdr10f4yoGeY9z-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
+          View in Figma
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>      </div>
+      <div class="order-1 md:order-2 flex justify-center">
+        <div class="w-48 rounded-[2rem] border-8 border-ink bg-white overflow-hidden shadow-sm">
+          <!-- Replace src below with your exported bus tracking screenshot -->
+          <img src="images/bus-tracking.jpg" alt="Bus tracking app screen" class="w-full aspect-[9/19] object-cover bg-line">
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 3: AR Menu -->
+    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-line">
+      <div class="flex justify-center">
+        <div class="w-48 rounded-[2rem] border-8 border-ink bg-white overflow-hidden shadow-sm">
+          <!-- Replace src below with your exported AR menu screenshot -->
+          <img src="images/ar-menu.jpg" alt="AR menu app screen" class="w-full aspect-[9/19] object-cover bg-line">
+        </div>
+      </div>
+      <div>
+        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-gold/20 text-ink mb-4">Mobile · AR ordering</span>
+        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">AR menu</h3>
+        <p class="text-charcoal leading-relaxed mb-5">
+          An app for viewing meals in real time before ordering. Instead of a photo on a laminated
+          card, a diner points their camera at the table and sees the dish itself, at scale — what
+          it actually looks like before it arrives.
+        </p>
+        <a href="https://www.figma.com/design/C0M51t546t26TCjwUYbx5S/AR-menu?t=ZoBkqCoo69En5WUt-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
+          View in Figma
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 4: Email Design -->
+    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-line">
+      <div class="order-2 md:order-1">
+        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-gold/20 text-ink mb-4">Web · Marketing email</span>
+        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">Email design system</h3>
+        <p class="text-charcoal leading-relaxed mb-5">
+          A set of marketing email templates built to stay readable across clients that render
+          HTML differently — Gmail, Outlook, Apple Mail. Modular blocks so a marketing team can
+          rearrange a campaign without opening Figma.
+        </p>
+        <a href="https://www.figma.com/design/J02AAtDMaqzzQmkgU48FO7/Email-Design?t=ydPU78LbDDi9xeXU-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
+          View in Figma
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+      <div class="order-1 md:order-2 rounded-xl overflow-hidden bg-white border border-line shadow-sm">
+        <div class="h-8 bg-ink/5 border-b border-line flex items-center px-3">
+          <span class="text-xs text-charcoal/60">New campaign — draft</span>
+        </div>
+        <!-- Replace src below with your exported email design screenshot -->
+        <img src="images/email-design.jpg" alt="Marketing email template" class="w-full aspect-[16/10] object-cover bg-line">
+      </div>
+    </article>
+
+    <!-- Project 5: RealMates -->
+    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14">
+      <div class="rounded-xl overflow-hidden bg-white border border-line shadow-sm">
+        <div class="h-8 bg-ink/5 border-b border-line flex items-center gap-1.5 px-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+        </div>
+        <!-- Replace src below with your exported RealMates screenshot -->
+        <img src="images/Realmates.jpg" alt="RealMates app interface" class="w-full aspect-[16/10] object-cover object-top bg-line">
+      </div>
+      <div>
+        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-blue/10 text-blue mb-4">Mobile & Web · Logistics</span>
+        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">RealMates</h3>
+        <p class="text-charcoal leading-relaxed mb-5">
+          A platform for shipping products from abroad, paired with an in-store catalogue for
+          items already available locally. The interface has to make one thing clear at every
+          step: is this coming from overseas, or already on the shelf.
+        </p>
+<a href="https://www.figma.com/design/C0M51t546t26TCjwUYbx5S/AR-menu?node-id=276-2&t=CeFdr10f4yoGeY9z-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
+          View in Figma
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="border-t border-line bg-white">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 grid md:grid-cols-5 gap-12">
+
+    <div class="reveal md:col-span-2">
+      <div class="aspect-square rounded-2xl bg-ink/5 border border-line flex items-center justify-center">
+        <span class="font-display text-6xl text-ink/20">Mutaboba Elois</span>
+      </div>
+    </div>
+
+    <div class="reveal md:col-span-3">
+      <p class="text-sm text-blue font-medium mb-4">About</p>
+      <h2 class="font-display text-3xl md:text-4xl tracking-tight mb-6">Mutaboba Elois</h2>
+      <div class="space-y-4 text-charcoal leading-relaxed max-w-xl">
+        <p>
+          I'm a UI/UX designer working across mobile and web, designing every interface in Figma
+          from first wireframe to final handoff. My work leans toward products with a real
+          operational problem underneath — booking systems, ordering flows, tracking tools —
+          where the interface has to hold up under actual daily use.
+        </p>
+        <p>
+          I work closely with teams day to day, coordinating design work and feedback through
+          ClickUp so nothing gets lost between a comment and a shipped screen.
+        </p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Figma</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">ClickUp</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Wireframing</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Prototyping</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Design systems</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Mobile UI</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Usability testing</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CONTACT / FOOTER ============ -->
+<footer id="contact" class="bg-ink text-paper">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-24">
+    <div class="reveal grid md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="font-display text-3xl md:text-4xl tracking-tight mb-4">Let's work together.</h2>
+        <p class="text-paper/70 max-w-sm leading-relaxed">
+          Open to mobile and web UI/UX roles and freelance projects. The fastest way to reach me
+          is email.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 md:items-end">
+        <a href="mailto:mutabobaelois@gmail.com" target="_blank" class="text-lg font-medium hover:text-gold transition-colors">mutabobaelois@gmail.com</a>
+        <a href="https://www.linkedin.com/in/mutaboba-elois-a97487385/" target="_blank"  class="text-lg font-medium hover:text-gold transition-colors">LinkedIn</a>
+        <a href="tel:0793659742" class="text-lg font-medium hover:text-gold transition-colors">0793 659 742</a>
+        <div class="flex gap-5 mt-2 text-sm text-paper/70">
+          <a href="https://www.figma.com/design/bS85oK6VQLIc3aoTbX7HX7/Inyamibwa?node-id=0-1&t=T8QWTO6YnweXm5Oe-1" target="_blank" rel="noopener" class="hover:text-paper transition-colors">Figma</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 pt-8 border-t border-paper/10 text-xs text-paper/50">
+      © <span id="year"></span> Mutaboba Elois. Kigali, Rwanda.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('flex');
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('flex');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Quiet, single-pattern scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
