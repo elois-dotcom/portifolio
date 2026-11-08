@@ -1,366 +1,259 @@
+Claude
+
+
+Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mutaboba Elois — UI/UX Designer</title>
-<meta name="description" content="Mutaboba Elois, UI/UX designer working across web and mobile — booking platforms, marketing email, AR ordering, transit tracking, and logistics apps.">
-
-<!-- Fonts: Fraunces for display, Inter for UI/body -->
+<title>Mutaboba Elois, Builder: design, code and security</title>
+<meta name="description" content="Mutaboba Elois, forward deployed engineer at Minetech in Kigali. I design interfaces, build the software behind them and test it for weak spots.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          ink:      '#12152B',
-          paper:    '#F7F6F1',
-          blue:     '#1B4FD1',
-          gold:     '#F2B705',
-          green:    '#1D6B4A',
-          charcoal: '#4A4D5C',
-          line:     '#E4E1D6',
-        },
-        fontFamily: {
-          display: ['Fraunces', 'serif'],
-          body: ['Inter', 'sans-serif'],
-        },
-      },
-    },
-  }
-</script>
-
+<script>tailwind.config={theme:{extend:{colors:{ink:'#B8341A',panel:'#9A2A12',ember:'#FFE600',rust:'#9A2A12'},fontFamily:{sans:['"Plus Jakarta Sans"','sans-serif']}}}}</script>
 <style>
-  html { scroll-behavior: smooth; }
-  body { background-color: #F7F6F1; }
-
-  /* Reveal-on-scroll: one quiet fade/rise, not per-card bounce */
-  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
-  }
-
-  :focus-visible {
-    outline: 2px solid #1B4FD1;
-    outline-offset: 3px;
-  }
-
-  .imigongo-line { stroke-dasharray: 900; stroke-dashoffset: 900; animation: draw 1.8s ease forwards; }
-  @keyframes draw { to { stroke-dashoffset: 0; } }
-  @media (prefers-reduced-motion: reduce) {
-    .imigongo-line { stroke-dashoffset: 0; animation: none; }
-  }
+html{scroll-behavior:smooth}
+body{background-color:#B8341A;color:#FFFAFA;background-image:linear-gradient(rgba(255,250,250,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,250,250,.13) 1px,transparent 1px);background-size:56px 56px}
+.mute{color:rgba(255,250,250,.8)}
+:focus-visible{outline:2px solid #FFE600;outline-offset:3px}
+.btn{display:inline-flex;align-items:center;gap:.75rem;border-radius:9999px;padding:.375rem .375rem .375rem 1.25rem;background:#FFFAFA;color:#3B0F05;font-weight:600;font-size:.875rem}
+.btn i{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:9999px;background:#FFE600;color:#3B0F05;transition:transform .35s}
+.btn:hover i{transform:rotate(45deg)}
+/* Glass: translucent fill, blur, light edge */
+.glass{background:rgba(255,255,255,.1);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.22)}
+.line{display:block;overflow:hidden}
+.line>span{display:block;transform:translateY(105%);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+.fade{opacity:0;animation:in .8s ease forwards;animation-delay:var(--d,0s)}
+@keyframes up{to{transform:none}}@keyframes in{to{opacity:1}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.on{opacity:1;transform:none}
+.marq{display:flex;width:max-content;animation:marq 36s linear infinite}
+.marq:hover{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+/* Project card + glass hover overlay */
+.proj{position:relative;display:block;overflow:hidden;border-radius:2rem;background:#9A2A12}
+.shot{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.proj:hover .shot,.proj:focus-visible .shot{transform:scale(1.06)}
+.ov{position:absolute;inset:0;background:rgba(110,28,10,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:1.75rem;display:flex;flex-direction:column;justify-content:flex-end;gap:.75rem;transform:translateY(101%);transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.proj:hover .ov,.proj:focus-visible .ov{transform:none}
+.ov h3{font-size:1.5rem;font-weight:800;line-height:1.1}
+.ov p{font-size:.9rem;line-height:1.55;font-weight:500}
+.ov b{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:700}
+.phone{border-radius:1.5rem;border:4px solid #7A200C;overflow:hidden;aspect-ratio:9/19;background:#7A200C}
+.code{padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between}
+.code span.t{display:inline-block;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:9999px;border:1px solid rgba(255,255,255,.2);margin:0 .4rem .4rem 0}
+/* CV rows */
+.cv{display:grid;gap:2rem;padding:5rem 0;border-top:1px solid rgba(255,250,250,.3)}
+.cv>h2{font-size:1.5rem;font-weight:700}
+@media(min-width:768px){.cv{grid-template-columns:repeat(12,1fr)}.cv>h2{grid-column:span 3;position:sticky;top:6rem;align-self:start}.cv>div{grid-column:span 9}}
+.tl{position:relative;padding-left:2rem}
+.tl:before{content:"";position:absolute;left:0;top:.5rem;bottom:.5rem;width:2px;background:rgba(255,250,250,.25)}
+.tl .fill{position:absolute;left:0;top:.5rem;bottom:.5rem;width:2px;background:#FFE600;transform-origin:top;transform:scaleY(0)}
+.it{position:relative;padding-bottom:2.5rem}.it:last-child{padding-bottom:0}
+.it:before{content:"";position:absolute;left:-2.4rem;top:.45rem;width:.75rem;height:.75rem;border-radius:9999px;background:#FFE600}
+.it ul{margin-top:.75rem;max-width:40rem;list-style:disc;padding-left:1.25rem;color:rgba(255,250,250,.92);line-height:1.6}.it li{margin-bottom:.4rem}
+.row{display:grid;gap:.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,250,250,.3);transition:padding .4s,color .3s}
+@media(min-width:768px){.row{grid-template-columns:1fr 2fr;gap:2rem}}
+.row:hover{padding-left:1rem;color:#FFE600}.row p{color:rgba(255,250,250,.8)}
+#bar{position:fixed;top:0;left:0;height:3px;width:100%;background:#FFE600;transform:scaleX(0);transform-origin:left;z-index:60}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.line>span,.fade,.rv{animation:none;transition:none;opacity:1;transform:none}.marq{animation:none}.ov,.shot{transition:none}}
 </style>
 </head>
-
-<body class="font-body text-ink antialiased">
-
-<!-- ============ NAV ============ -->
-<header class="fixed top-0 inset-x-0 z-50 bg-paper/90 backdrop-blur border-b border-line">
-  <div class="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-    <a href="#top" class="font-display text-lg font-semibold tracking-tight">Mutaboba Elois</a>
-
-    <nav class="hidden md:flex items-center gap-8 text-sm text-charcoal">
-      <a href="#work" class="hover:text-ink transition-colors">Work</a>
-      <a href="#about" class="hover:text-ink transition-colors">About</a>
-      <a href="#contact" class="hover:text-ink transition-colors">Contact</a>
-      <a href="mailto:mutabobaelois@gmail.com" class="inline-flex items-center px-4 py-2 rounded-full bg-ink text-paper hover:bg-blue transition-colors">Email me</a>
+<body class="font-sans antialiased">
+<svg width="0" height="0" class="absolute"><symbol id="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></symbol></svg>
+<div id="bar"></div>
+ 
+<header class="fixed top-0 inset-x-0 z-50 bg-[#B8341A]/85 backdrop-blur border-b border-white/20">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a href="#top" class="font-bold text-lg">Mutaboba Elois</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#about" class="hover:opacity-70">About</a><a href="#work" class="hover:opacity-70">Work</a><a href="#experience" class="hover:opacity-70">Experience</a><a href="#beyond" class="hover:opacity-70">Beyond code</a>
+      <a href="#contact" class="btn">Get in touch <i><svg class="w-4 h-4"><use href="#ar"/></svg></i></a>
     </nav>
-
-    <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="md:hidden p-2 -mr-2">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
+    <button id="mb" aria-label="Open menu" aria-expanded="false" class="md:hidden p-2 -mr-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h18M3 17h18"/></svg></button>
   </div>
-
-  <div id="mobileMenu" class="md:hidden hidden flex-col border-t border-line bg-paper">
-    <a href="#work" class="px-6 py-3 text-sm border-b border-line">Work</a>
-    <a href="#about" class="px-6 py-3 text-sm border-b border-line">About</a>
-    <a href="#contact" class="px-6 py-3 text-sm border-b border-line">Contact</a>
-    <a href="mailto:mutabobaelois@gmail.com" class="px-6 py-3 text-sm text-blue font-medium">Email me</a>
+  <div id="mm" class="hidden md:hidden bg-ink border-t border-white/10 flex-col">
+    <a href="#about" class="px-6 py-3 border-b border-white/10">About</a><a href="#work" class="px-6 py-3 border-b border-white/10">Work</a><a href="#experience" class="px-6 py-3 border-b border-white/10">Experience</a><a href="#beyond" class="px-6 py-3 border-b border-white/10">Beyond code</a><a href="#contact" class="px-6 py-3 text-ember font-semibold">Get in touch</a>
   </div>
 </header>
-
-<!-- ============ HERO ============ -->
-<section id="top" class="pt-16">
-  <div class="max-w-6xl mx-auto px-6 md:px-10 grid md:grid-cols-5 gap-10 md:gap-6 py-16 md:py-24 items-center">
-
-    <div class="md:col-span-3">
-      <p class="text-sm text-blue font-medium mb-5">UI/UX designer, based in Kigali</p>
-      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight">
-        I design mobile and web products that hold up once real people start tapping on them.
-      </h1>
-      <p class="mt-6 text-lg text-charcoal max-w-xl leading-relaxed">
-        Five years of interfaces designed end-to-end in Figma — booking platforms, ordering
-        experiences, logistics tools — built to survive contact with actual users, not just a
-        client review call.
-      </p>
-      <div class="mt-8 flex flex-wrap items-center gap-4">
-        <a href="#work" class="inline-flex items-center px-5 py-3 rounded-full bg-ink text-paper text-sm font-medium hover:bg-blue transition-colors">See the work</a>
-        <a href="mailto:mutabobaelois@gmail.com" class="inline-flex items-center px-5 py-3 rounded-full border border-ink text-sm font-medium hover:border-blue hover:text-blue transition-colors">mutabobaelois@gmail.com</a>
-      </div>
+ 
+<!-- HERO: muted rust instead of bright orange; glass panels sit over flat shapes -->
+<section id="top" class="relative overflow-hidden min-h-[94vh] flex flex-col justify-end">
+  <div class="absolute rounded-full bg-[#D9501F] w-[26rem] h-[26rem] -top-24 right-[8%]"></div>
+  <div class="absolute rounded-full bg-[#8C2410] w-72 h-72 bottom-40 left-[38%]"></div>
+  <!-- Optional portrait: images/elois.jpg -->
+  <img data-par src="images/elois.jpg" alt="" onerror="this.remove()" class="absolute right-0 bottom-0 h-full w-full md:w-3/5 object-cover object-top grayscale mix-blend-multiply opacity-70">
+  <div class="relative max-w-7xl mx-auto w-full px-6 pt-36 pb-10">
+    <p class="fade font-semibold text-lg md:text-xl mb-2" style="--d:.1s">Hey, I'm a</p>
+    <h1 class="font-extrabold tracking-tight leading-[.95] text-[4.2rem] sm:text-[8rem] lg:text-[12rem]"><span class="line"><span style="--d:.2s">Builder.</span></span></h1>
+    <div class="fade glass rounded-3xl p-6 mt-8 max-w-sm md:absolute md:right-6 md:top-[42%]" style="--d:.8s">
+      <p class="font-bold text-xl leading-snug">I design the interface, build what's behind it and test it for weak spots.</p>
+      <p class="mt-3 text-sm text-white/80">Forward deployed engineer at Minetech. Software engineering student at AUCA, Kigali.</p>
     </div>
-
-    <!-- Decorative geometric panel, referencing Imigongo triangle patterning -->
-    <div class="md:col-span-2">
-      <div class="aspect-[4/5] rounded-2xl bg-ink relative overflow-hidden">
-        <svg viewBox="0 0 300 375" class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
-          <rect width="300" height="375" fill="#12152B"/>
-          <polygon points="0,0 150,187 0,375" fill="#1B4FD1" opacity="0.9"/>
-          <polygon points="150,0 300,0 150,187" fill="#F2B705" opacity="0.9"/>
-          <polygon points="150,187 300,0 300,187" fill="#1D6B4A" opacity="0.85"/>
-          <polygon points="150,187 300,187 300,375" fill="#1B4FD1" opacity="0.6"/>
-          <polygon points="150,187 300,375 150,375" fill="#F2B705" opacity="0.5"/>
-          <g fill="none" stroke="#F7F6F1" stroke-width="1.5" opacity="0.55">
-            <path class="imigongo-line" d="M0 0 L150 187 L0 375"/>
-            <path class="imigongo-line" d="M150 0 L300 0 L150 187 Z"/>
-            <path class="imigongo-line" d="M150 187 L300 0 L300 187 Z"/>
-            <path class="imigongo-line" d="M150 187 L300 187 L300 375"/>
-            <path class="imigongo-line" d="M150 187 L300 375 L150 375"/>
-          </g>
-        </svg>
-      </div>
-      <p class="mt-3 text-xs text-charcoal">Pattern language borrowed from Imigongo geometric art.</p>
+    <div class="fade glass rounded-3xl mt-10 p-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm" style="--d:1s">
+      <p><b class="block text-white/70">#01</b>Product and UI/UX design</p>
+      <p><b class="block text-white/70">#02</b>Full-stack development</p>
+      <p><b class="block text-white/70">#03</b>Email marketing design</p>
+      <p><b class="block text-white/70">#04</b>Security testing</p>
     </div>
-
   </div>
 </section>
-
-<!-- ============ WORK ============ -->
-<section id="work" class="border-t border-line">
-  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
-
-    <div class="reveal flex items-end justify-between flex-wrap gap-4 mb-14">
-      <h2 class="font-display text-3xl md:text-4xl tracking-tight">Featured work</h2>
-      <p class="text-charcoal text-sm max-w-sm">Five projects, five different problems — a dance troupe's bookings, a rider's next bus, a diner's order, a shipment's route.</p>
-    </div>
-
-    <!-- Project 1: Inyamibwa -->
-    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-line">
-      <div class="rounded-xl overflow-hidden bg-white border border-line shadow-sm">
-        <div class="h-8 bg-ink/5 border-b border-line flex items-center gap-1.5 px-3">
-          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-        </div>
-        <!-- Replace src below with your exported Inyamibwa screenshot -->
-        <img src="images/inyamibwa.jpg" alt="Inyamibwa booking site interface" class="w-full aspect-[16/10] object-cover object-top bg-line">
-      </div>
-      <div>
-        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-blue/10 text-blue mb-4">Web · Booking platform</span>
-        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">Inyamibwa</h3>
-        <p class="text-charcoal leading-relaxed mb-5">
-          A booking site for a traditional dance troupe. The old process ran through phone calls
-          and word of mouth, so clients often couldn't tell what the troupe did or when they were
-          free. I designed a site that shows upcoming performances and lets clients request a
-          booking without a phone call.
-        </p>
-        <a href="https://www.figma.com/design/bS85oK6VQLIc3aoTbX7HX7/Inyamibwa?node-id=0-1&t=T8QWTO6YnweXm5Oe-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
-          View in Figma
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- Project 2: Bus Tracking -->
-    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-line">
-      <div class="order-2 md:order-1">
-        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-green/10 text-green mb-4">Mobile · Transit app</span>
-        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">Bus tracking app</h3>
-        <p class="text-charcoal leading-relaxed mb-5">
-          A mobile app for tracking buses in real time, so riders stop guessing when the next one
-          actually arrives. Alongside tracking, I designed a lost-and-found flow — riders can log
-          an item they've lost or found on a route and match it against the same trip.
-        </p>
-          <a href="https://www.figma.com/design/C0M51t546t26TCjwUYbx5S/AR-menu?node-id=78-2&t=CeFdr10f4yoGeY9z-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
-          View in Figma
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-        </a>      </div>
-      <div class="order-1 md:order-2 flex justify-center">
-        <div class="w-48 rounded-[2rem] border-8 border-ink bg-white overflow-hidden shadow-sm">
-          <!-- Replace src below with your exported bus tracking screenshot -->
-          <img src="images/bus-tracking.jpg" alt="Bus tracking app screen" class="w-full aspect-[9/19] object-cover bg-line">
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 3: AR Menu -->
-    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-line">
-      <div class="flex justify-center">
-        <div class="w-48 rounded-[2rem] border-8 border-ink bg-white overflow-hidden shadow-sm">
-          <!-- Replace src below with your exported AR menu screenshot -->
-          <img src="images/ar-menu.jpg" alt="AR menu app screen" class="w-full aspect-[9/19] object-cover bg-line">
-        </div>
-      </div>
-      <div>
-        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-gold/20 text-ink mb-4">Mobile · AR ordering</span>
-        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">AR menu</h3>
-        <p class="text-charcoal leading-relaxed mb-5">
-          An app for viewing meals in real time before ordering. Instead of a photo on a laminated
-          card, a diner points their camera at the table and sees the dish itself, at scale — what
-          it actually looks like before it arrives.
-        </p>
-        <a href="https://www.figma.com/design/C0M51t546t26TCjwUYbx5S/AR-menu?t=ZoBkqCoo69En5WUt-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
-          View in Figma
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- Project 4: Email Design -->
-    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-line">
-      <div class="order-2 md:order-1">
-        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-gold/20 text-ink mb-4">Web · Marketing email</span>
-        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">Email design system</h3>
-        <p class="text-charcoal leading-relaxed mb-5">
-          A set of marketing email templates built to stay readable across clients that render
-          HTML differently — Gmail, Outlook, Apple Mail. Modular blocks so a marketing team can
-          rearrange a campaign without opening Figma.
-        </p>
-        <a href="https://www.figma.com/design/J02AAtDMaqzzQmkgU48FO7/Email-Design?t=ydPU78LbDDi9xeXU-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
-          View in Figma
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-        </a>
-      </div>
-      <div class="order-1 md:order-2 rounded-xl overflow-hidden bg-white border border-line shadow-sm">
-        <div class="h-8 bg-ink/5 border-b border-line flex items-center px-3">
-          <span class="text-xs text-charcoal/60">New campaign — draft</span>
-        </div>
-        <!-- Replace src below with your exported email design screenshot -->
-        <img src="images/email-design.jpg" alt="Marketing email template" class="w-full aspect-[16/10] object-cover bg-line">
-      </div>
-    </article>
-
-    <!-- Project 5: RealMates -->
-    <article class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14">
-      <div class="rounded-xl overflow-hidden bg-white border border-line shadow-sm">
-        <div class="h-8 bg-ink/5 border-b border-line flex items-center gap-1.5 px-3">
-          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-        </div>
-        <!-- Replace src below with your exported RealMates screenshot -->
-        <img src="images/Realmates.jpg" alt="RealMates app interface" class="w-full aspect-[16/10] object-cover object-top bg-line">
-      </div>
-      <div>
-        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full bg-blue/10 text-blue mb-4">Mobile & Web · Logistics</span>
-        <h3 class="font-display text-2xl md:text-3xl tracking-tight mb-3">RealMates</h3>
-        <p class="text-charcoal leading-relaxed mb-5">
-          A platform for shipping products from abroad, paired with an in-store catalogue for
-          items already available locally. The interface has to make one thing clear at every
-          step: is this coming from overseas, or already on the shelf.
-        </p>
-<a href="https://www.figma.com/design/C0M51t546t26TCjwUYbx5S/AR-menu?node-id=276-2&t=CeFdr10f4yoGeY9z-1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-blue transition-colors">
-          View in Figma
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-        </a>      </div>
-    </article>
-
+ 
+<section class="bg-black/15 border-y border-white/25 py-8 overflow-hidden" aria-label="Tools">
+  <div class="max-w-7xl mx-auto px-6 flex items-center gap-8">
+    <p class="hidden md:block w-32 shrink-0 text-xs font-semibold leading-snug">Tools I build with</p>
+    <div class="overflow-hidden flex-1"><div class="marq text-lg font-bold" id="mq"></div></div>
   </div>
 </section>
-
-<!-- ============ ABOUT ============ -->
-<section id="about" class="border-t border-line bg-white">
-  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 grid md:grid-cols-5 gap-12">
-
-    <div class="reveal md:col-span-2">
-      <div class="aspect-square rounded-2xl bg-ink/5 border border-line flex items-center justify-center">
-        <span class="font-display text-6xl text-ink/20">Mutaboba Elois</span>
-      </div>
+ 
+<main class="max-w-7xl mx-auto px-6">
+<section id="about" class="py-24 md:py-32">
+  <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+    <div class="rv"><p class="text-ember font-semibold mb-4">Behind the work</p>
+      <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">One person from first sketch to secured launch</h2></div>
+    <div class="rv" style="--d:.15s">
+      <p class="text-xl md:text-2xl font-semibold leading-snug">I'm an aspiring software engineer and penetration tester focused on web development, system security and ethical hacking.</p>
+      <p class="mt-5 mute leading-relaxed max-w-lg">I design in Figma, build with React, Node.js, PostgreSQL and PL/SQL, and use Claude and VS Code to move faster. At Minetech I work as a forward deployed engineer, taking software to the people who use it.</p>
+      <a href="#contact" class="btn mt-8">Get in touch <i><svg class="w-4 h-4"><use href="#ar"/></svg></i></a>
     </div>
-
-    <div class="reveal md:col-span-3">
-      <p class="text-sm text-blue font-medium mb-4">About</p>
-      <h2 class="font-display text-3xl md:text-4xl tracking-tight mb-6">Mutaboba Elois</h2>
-      <div class="space-y-4 text-charcoal leading-relaxed max-w-xl">
-        <p>
-          I'm a UI/UX designer working across mobile and web, designing every interface in Figma
-          from first wireframe to final handoff. My work leans toward products with a real
-          operational problem underneath — booking systems, ordering flows, tracking tools —
-          where the interface has to hold up under actual daily use.
-        </p>
-        <p>
-          I work closely with teams day to day, coordinating design work and feedback through
-          ClickUp so nothing gets lost between a comment and a shipped screen.
-        </p>
+  </div>
+  <div class="cv mt-20 md:mt-28"><h2>Skills</h2>
+    <div class="grid sm:grid-cols-2 gap-8 rv" id="sk"></div></div>
+</section>
+ 
+<!-- WORK -->
+<section id="work" class="cv !pt-20"><h2>Design work</h2>
+  <div>
+    <!-- EcoFleet: complete app. Add images/ecofleet-1.jpg to ecofleet-4.jpg and your Figma link in place of # -->
+    <a class="proj rv p-6 md:p-10 mb-8" href="#" target="_blank" rel="noopener">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="phone"><img class="shot" src="images/ecofleet-1.jpg" alt="EcoFleet screen 1"></div>
+        <div class="phone md:mt-10"><img class="shot" src="images/ecofleet-2.jpg" alt="EcoFleet screen 2"></div>
+        <div class="phone"><img class="shot" src="images/ecofleet-3.jpg" alt="EcoFleet screen 3"></div>
+        <div class="phone md:mt-10"><img class="shot" src="images/ecofleet-4.jpg" alt="EcoFleet screen 4"></div>
       </div>
-
-      <div class="mt-8 flex flex-wrap gap-2">
-        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Figma</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">ClickUp</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Wireframing</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Prototyping</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Design systems</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Mobile UI</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-line text-charcoal">Usability testing</span>
-      </div>
-    </div>
-
+      <p class="mt-6 font-bold text-lg">EcoFleet <span class="font-medium mute">Mobile, fleet app</span></p>
+      <span class="ov"><h3>EcoFleet</h3><p>The complete fleet app, designed end to end: every screen from first launch to daily use.</p><b>View the full app <svg class="w-4 h-4"><use href="#ar"/></svg></b></span>
+    </a>
+    <div class="grid md:grid-cols-2 gap-x-8 gap-y-12" id="dz"></div>
   </div>
 </section>
-
-<!-- ============ CONTACT / FOOTER ============ -->
-<footer id="contact" class="bg-ink text-paper">
-  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-24">
-    <div class="reveal grid md:grid-cols-2 gap-12">
-      <div>
-        <h2 class="font-display text-3xl md:text-4xl tracking-tight mb-4">Let's work together.</h2>
-        <p class="text-paper/70 max-w-sm leading-relaxed">
-          Open to mobile and web UI/UX roles and freelance projects. The fastest way to reach me
-          is email.
-        </p>
-      </div>
-      <div class="flex flex-col gap-4 md:items-end">
-        <a href="mailto:mutabobaelois@gmail.com" target="_blank" class="text-lg font-medium hover:text-gold transition-colors">mutabobaelois@gmail.com</a>
-        <a href="https://www.linkedin.com/in/mutaboba-elois-a97487385/" target="_blank"  class="text-lg font-medium hover:text-gold transition-colors">LinkedIn</a>
-        <a href="tel:0793659742" class="text-lg font-medium hover:text-gold transition-colors">0793 659 742</a>
-        <div class="flex gap-5 mt-2 text-sm text-paper/70">
-          <a href="https://www.figma.com/design/bS85oK6VQLIc3aoTbX7HX7/Inyamibwa?node-id=0-1&t=T8QWTO6YnweXm5Oe-1" target="_blank" rel="noopener" class="hover:text-paper transition-colors">Figma</a>
-        </div>
-      </div>
+ 
+<section class="cv"><h2>Built with code</h2>
+  <div><p class="mute max-w-xl mb-8 rv">Full-stack and automation projects. The repositories are on GitHub.</p>
+    <div class="grid md:grid-cols-2 gap-x-8 gap-y-12" id="cd"></div>
+    <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener" class="btn mt-10">See all projects on GitHub <i><svg class="w-4 h-4"><use href="#ar"/></svg></i></a>
+  </div>
+</section>
+ 
+<section class="cv"><h2>Email marketing</h2>
+  <div class="rv max-w-xl"><h3 class="text-2xl font-bold">Campaign templates that convert</h3>
+    <p class="mute mt-3 leading-relaxed">As email designer at Audax Marketing Company I built campaign templates and automated flows in Klaviyo, laid out to stay readable across devices and mail clients.</p>
+    <a href="https://www.figma.com/design/J02AAtDMaqzzQmkgU48FO7/Email-Design?t=ydPU78LbDDi9xeXU-1" target="_blank" rel="noopener" class="btn mt-6">View email designs <i><svg class="w-4 h-4"><use href="#ar"/></svg></i></a></div></section>
+ 
+<section class="cv"><h2>Security work</h2>
+  <div class="rv max-w-xl"><h3 class="text-2xl font-bold">Finding weaknesses before attackers do</h3>
+    <p class="mute mt-3 leading-relaxed">During my internship at Lycée de Kicukiro APADE I ran reconnaissance and vulnerability assessments with Nmap and Nikto. I found misconfigurations and exposed credentials, and wrote mitigation steps to secure the databases. I'm now studying Ethical Hacking and Cyber Security with Cisco Networking Academy.</p></div></section>
+ 
+<section id="experience" class="cv"><h2>Experience</h2><div class="tl rv" id="ex"><span class="fill"></span></div></section>
+ 
+<section class="cv"><h2>Education and credentials</h2><div class="tl rv" id="ed"><span class="fill"></span></div></section>
+ 
+<section id="beyond" class="cv"><h2>Beyond code</h2>
+  <div><p class="text-xl font-semibold max-w-xl mb-10 rv">Tech is how I work. These roles are how I give back.</p>
+    <div class="tl rv"><span class="fill"></span>
+      <div class="it"><h3 class="text-2xl font-bold">Youth Remember Genocide coordinator</h3><p class="mute">Community leadership</p><p class="mt-3 text-white/90 max-w-xl leading-relaxed">Coordinating young people in remembrance and education activities around the Genocide against the Tutsi, so memory and learning stay alive in my generation.</p></div>
+      <div class="it"><h3 class="text-2xl font-bold">ALX ambassador</h3><p class="mute">Tech community</p><p class="mt-3 text-white/90 max-w-xl leading-relaxed">Helping new learners find their way onto ALX programs and supporting peers through data analytics and virtual assistant materials.</p></div>
+    </div></div></section>
+ 
+<section class="cv"><h2>Off the clock</h2>
+  <div class="rv">
+    <div class="row"><h3 class="text-2xl font-bold">Basketball</h3><p>Team sport. It taught me to pass early and trust the people around me, which is most of a good code review.</p></div>
+    <div class="row"><h3 class="text-2xl font-bold">Movies</h3><p>I watch for framing and pacing, and for how a scene guides your eye. That's interface design by another name.</p></div>
+    <div class="row"><h3 class="text-2xl font-bold">Gaming</h3><p>Fast feedback, no manual, onboarding you barely notice. Games are the best UX lab, and good systems thinking.</p></div>
+    <div class="row"><h3 class="text-2xl font-bold">Instrumental music</h3><p>Always on while I build. Rhythm and repetition are the logic behind clean code and good design systems.</p></div>
+    <div class="row"><h3 class="text-2xl font-bold">Languages</h3><p>English (fluent), Kinyarwanda (native).</p></div>
+  </div></section>
+</main>
+ 
+<footer id="contact" class="bg-black/15 border-t border-white/25 mt-10">
+  <div class="max-w-7xl mx-auto px-6 pt-20 pb-10">
+    <h2 class="rv text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.02] max-w-4xl">Let's build something meaningful together.</h2>
+    <p class="rv mt-6 max-w-md text-white/85" style="--d:.1s">Open to software, design and security roles and to freelance projects. Email is the fastest way to reach me.</p>
+    <div class="rv glass rounded-3xl mt-10 p-6 flex flex-wrap gap-x-10 gap-y-3 text-lg font-bold" style="--d:.2s">
+      <a href="mailto:mutabobaelois@gmail.com" class="underline underline-offset-4">mutabobaelois@gmail.com</a>
+      <a href="tel:+250793659742" class="underline underline-offset-4">+250 793 659 742</a>
+      <a href="https://www.linkedin.com/in/mutaboba-elois-a97487385/" target="_blank" rel="noopener" class="underline underline-offset-4">LinkedIn</a>
+      <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener" class="underline underline-offset-4">GitHub</a>
+      <a href="https://www.figma.com/design/bS85oK6VQLIc3aoTbX7HX7/Inyamibwa?node-id=0-1&t=T8QWTO6YnweXm5Oe-1" target="_blank" rel="noopener" class="underline underline-offset-4">Figma</a>
     </div>
-    <div class="mt-16 pt-8 border-t border-paper/10 text-xs text-paper/50">
-      © <span id="year"></span> Mutaboba Elois. Kigali, Rwanda.
-    </div>
+    <p class="mt-16 pt-6 border-t border-white/20 text-sm text-white/80">&copy; <span id="yr"></span> Mutaboba Elois. Kigali, Rwanda.</p>
   </div>
 </footer>
-
+ 
 <script>
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('flex');
-    mobileMenu.classList.toggle('hidden');
-    menuBtn.setAttribute('aria-expanded', isOpen);
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-    mobileMenu.classList.remove('flex');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }));
-
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Quiet, single-pattern scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const A='<svg class="w-4 h-4"><use href="#ar"/></svg>';
+// DESIGN projects: replace "#" with each Figma link. Copy a line to add more.
+const D=[
+['Inyamibwa','Web, booking platform','A booking site for a traditional dance troupe. Clients see upcoming performances and request a booking without a phone call.','inyamibwa.jpg','https://www.figma.com/design/bS85oK6VQLIc3aoTbX7HX7/Inyamibwa?node-id=0-1&t=T8QWTO6YnweXm5Oe-1'],
+['Bus tracking app','Mobile, transit','Real-time bus tracking so riders stop guessing, plus a lost-and-found flow matched to specific trips.','bus-tracking.jpg','https://www.figma.com/design/C0M51t546t26TCjwUYbx5S/AR-menu?node-id=78-2&t=CeFdr10f4yoGeY9z-1'],
+['AR menu','Mobile, AR ordering','Point your camera at the table and see the dish in 3D, at scale, before you order.','ar-menu.jpg','https://www.figma.com/design/C0M51t546t26TCjwUYbx5S/AR-menu?t=ZoBkqCoo69En5WUt-1'],
+['RealMates','Mobile and web, commerce','Shipping from abroad plus local store stock, with item origin and fulfilment status clear at every step.','Realmates.jpg','https://www.figma.com/design/C0M51t546t26TCjwUYbx5S/AR-menu?node-id=276-2&t=CeFdr10f4yoGeY9z-1'],
+['Menace','Design, NISRT hackathon','Product design used in the NISRT hackathon.','menace.jpg','#'],
+['Email design system','Email marketing','Modular campaign templates built in Klaviyo for Audax Marketing Company.','email-design.jpg','https://www.figma.com/design/J02AAtDMaqzzQmkgU48FO7/Email-Design?t=ydPU78LbDDi9xeXU-1']];
+$('#dz').innerHTML=D.map(([t,g,d,i,h],n)=>`<div class="rv" style="--d:${n%2*.12}s"><a class="proj aspect-[4/3]" href="${h}" target="_blank" rel="noopener"><img class="shot" src="images/${i}" alt="${t}"><span class="ov"><h3>${t}</h3><p>${d}</p><b>View in Figma ${A}</b></span></a><p class="mt-4 font-bold text-lg">${t} <span class="font-medium mute">${g}</span></p></div>`).join('');
+ 
+// CODE projects: replace "#" with each GitHub repo link.
+const C=[
+['Stock Management System',['React.js','Node.js','Express.js','MySQL'],'Full-stack inventory platform with real-time data retrieval and CRUD operations, plus optimized SQL queries.','#'],
+['Linzi AI',['Node.js','Twilio','WhatsApp'],'A WhatsApp chatbot that parses messages and links and tells people, in plain language, whether they look like scams.','#'],
+['Pharmacy platform',['Frontend','Payment APIs','Testing'],'Responsive interface and payment API integration built for Bendik Pharmacy Consultancy, streamlining pharmacy registration.','#']];
+$('#cd').innerHTML=C.map(([t,s,d,h],n)=>`<div class="rv" style="--d:${n%2*.12}s"><a class="proj code aspect-[4/3]" href="${h}" target="_blank" rel="noopener"><span class="flex gap-1.5"><i class="w-2.5 h-2.5 rounded-full bg-white/40"></i><i class="w-2.5 h-2.5 rounded-full bg-white/40"></i><i class="w-2.5 h-2.5 rounded-full bg-white/40"></i></span><span><span class="block text-2xl font-extrabold mb-4">${t}</span>${s.map(x=>`<span class="t">${x}</span>`).join('')}</span><span class="ov"><h3>${t}</h3><p>${d}</p><b>View on GitHub ${A}</b></span></a></div>`).join('');
+ 
+$('#sk').innerHTML=[['Languages and frameworks','JavaScript (ES6+), PHP, Python, React.js, Express.js, HTML5, CSS3, Tailwind CSS'],['Data and tools','PostgreSQL, PL/SQL, MySQL, Git, GitHub, Figma, Canva, VS Code, Claude'],['Security and testing','Penetration testing, vulnerability reconnaissance, Nmap, Nikto'],['Professional','Systems and requirements analysis, stakeholder communication, cross-functional collaboration, customer support']].map(([h,t])=>`<div><h3 class="font-bold mb-2">${h}</h3><p class="mute leading-relaxed">${t}</p></div>`).join('');
+ 
+const it=(a,b,c,l)=>`<div class="it"><p class="text-sm text-ember font-semibold">${c}</p><h3 class="text-2xl font-bold mt-1">${a}</h3><p class="mute">${b}</p>${l?'<ul>'+l.map(x=>'<li>'+x+'</li>').join('')+'</ul>':''}</div>`;
+$('#ex').insertAdjacentHTML('beforeend',[
+it('Forward deployed engineer','Minetech','Present',['Take software to the people who use it, working with clients to deploy and adapt it to how they operate.','Work with Figma, Claude, VS Code, PostgreSQL and PL/SQL.']),
+it('Email designer','Audax Marketing Company, Kigali','June 2026 to September 2026',['Designed campaign email templates in Klaviyo to improve click-through rates and brand engagement.','Built automated email flows with marketing teams, with layouts that work across devices.']),
+it('Community ambassador and support agent','ALX Rwanda, Kigali','January 2026 to present',['Helped new learners with platform navigation, authentication workflows and technical troubleshooting.','Gave peer support across data analytics and virtual assistant programs.','Worked the ALX call center, guiding people through registration and enrolment.']),
+it('Junior security analyst and pentester (internship)','Lycée de Kicukiro APADE, Kigali','April 2026',['Ran reconnaissance and vulnerability assessments on institutional apps with Nmap and Nikto.','Found misconfigurations and exposed credentials and recommended fixes to secure the databases.']),
+it('Frontend and payment API integration developer','Bendik Pharmacy Consultancy, Kigali','April 2025 to September 2025',['Built responsive interfaces and integrated payment APIs.','Tested and debugged to stabilise the system and speed up pharmacy registration.'])].join(''));
+$('#ed').insertAdjacentHTML('beforeend',[
+it('BSc in Software Engineering (in progress)','Adventist University of Central Africa, Kigali','2025 to present'),
+it('Advanced Diploma in Software Development','Lycée de Kicukiro APADE, Kigali','August 2022 to September 2025',['Web development, database systems, data structures and UI/UX design principles.']),
+it('Ethical Hacking and Cyber Security','Cisco Networking Academy','March 2026 to present'),
+it('Software Engineering and Entrepreneurship Pathway','ALX Rwanda','July 2025 to March 2026'),
+it('AI Career Essentials','ALX Rwanda','January 2024 to March 2024')].join(''));
+ 
+const T=['Figma','Claude','VS Code','PostgreSQL','PL/SQL','React','Node.js','Express','Tailwind CSS','Klaviyo','Nmap','Git'];
+$('#mq').innerHTML=T.concat(T).map(t=>`<span class="flex items-center gap-3 pr-12 whitespace-nowrap"><span class="w-3 h-3 rounded-full bg-ember"></span>${t}</span>`).join('');
+$('#yr').textContent=new Date().getFullYear();
+ 
+const mb=$('#mb'),mm=$('#mm');
+mb.onclick=()=>{const o=mm.classList.toggle('hidden');mm.classList.toggle('flex',!o);mb.setAttribute('aria-expanded',!o)};
+$$('#mm a').forEach(a=>a.onclick=()=>{mm.classList.add('hidden');mm.classList.remove('flex')});
+ 
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.1});
+$$('.rv').forEach(el=>io.observe(el));
+const calm=matchMedia('(prefers-reduced-motion: reduce)').matches,par=$('[data-par]'),bar=$('#bar'),tls=[...$$('.tl')];
+function tick(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+bar.style.transform='scaleX('+(h>0?y/h:0)+')';
+if(par&&!calm&&y<innerHeight)par.style.transform='translateY('+y*.18+'px)';
+tls.forEach(t=>{const r=t.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.7-r.top)/r.height));t.querySelector('.fill').style.transform='scaleY('+p+')'})}
+let q=false;addEventListener('scroll',()=>{if(!q){q=true;requestAnimationFrame(()=>{tick();q=false})}},{passive:true});
+addEventListener('resize',tick);tick();
 </script>
-
 </body>
 </html>
+ 
+
+
+
+
+
+Claude finished the response
