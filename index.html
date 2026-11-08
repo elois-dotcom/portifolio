@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
 <meta name="description" content="Mutaboba Elois, forward deployed engineer at Minetech in Kigali. I design interfaces, build the software behind them and test it for weak spots.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{ink:'#B8341A',panel:'#9A2A12',ember:'#FFE600',rust:'#9A2A12'},fontFamily:{sans:['"Plus Jakarta Sans"','sans-serif']}}}}</script>
 <style>
@@ -51,18 +50,29 @@ body{background-color:#B8341A;color:#FFFAFA;background-image:linear-gradient(rgb
 .tl .fill{position:absolute;left:0;top:.5rem;bottom:.5rem;width:2px;background:#FFE600;transform-origin:top;transform:scaleY(0)}
 .it{position:relative;padding-bottom:2.5rem}.it:last-child{padding-bottom:0}
 .it:before{content:"";position:absolute;left:-2.4rem;top:.45rem;width:.75rem;height:.75rem;border-radius:9999px;background:#FFE600}
-.it ul{margin-top:.75rem;max-width:40rem;list-style:disc;padding-left:1.25rem;color:rgba(255,250,250,.92);line-height:1.6}.it li{margin-bottom:.4rem}
+.it ul,.fb ul{margin-top:.75rem;max-width:40rem;list-style:disc;padding-left:1.25rem;color:rgba(255,250,250,.92);line-height:1.6}.it li,.fb li{margin-bottom:.4rem}
 .row{display:grid;gap:.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,250,250,.3);transition:padding .4s,color .3s}
 @media(min-width:768px){.row{grid-template-columns:1fr 2fr;gap:2rem}}
 .row:hover{padding-left:1rem;color:#FFE600}.row p{color:rgba(255,250,250,.8)}
+.bub{font-family:'Titan One',sans-serif;font-weight:400;letter-spacing:.02em;color:#FFFAFA;-webkit-text-stroke:.045em #3B0F05;paint-order:stroke fill;text-shadow:.05em .06em 0 #3B0F05}
+h1.bub .line{padding:.06em .14em .16em 0}
+.ar use{stroke-dasharray:1;stroke-dashoffset:1;animation:dash .9s cubic-bezier(.5,0,.2,1) forwards;animation-delay:var(--d,0s)}
+@keyframes dash{to{stroke-dashoffset:0}}
+#card{transform:translate3d(0,0,0)}
+#card[data-s=float]{padding:.9rem 1.1rem}
+#card[data-s=float] .fa p:first-child{font-size:.9rem}
+#card[data-s=float] .c2{display:none}
+#card[data-s=dock] .fa{display:none}
+#card:not([data-s=dock]) .fb{display:none}
+@media(min-width:768px){.dockbody{visibility:hidden}}
 #bar{position:fixed;top:0;left:0;height:3px;width:100%;background:#FFE600;transform:scaleX(0);transform-origin:left;z-index:60}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.line>span,.fade,.rv{animation:none;transition:none;opacity:1;transform:none}.marq{animation:none}.ov,.shot{transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.line>span,.fade,.rv{animation:none;transition:none;opacity:1;transform:none}.marq{animation:none}.ov,.shot{transition:none}.ar use{animation:none;stroke-dashoffset:0}}
 </style>
 </head>
 <body class="font-sans antialiased">
 <svg width="0" height="0" class="absolute"><symbol id="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></symbol></svg>
 <div id="bar"></div>
- 
+
 <header class="fixed top-0 inset-x-0 z-50 bg-[#B8341A]/85 backdrop-blur border-b border-white/20">
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <a href="#top" class="font-bold text-lg">Mutaboba Elois</a>
@@ -76,7 +86,7 @@ body{background-color:#B8341A;color:#FFFAFA;background-image:linear-gradient(rgb
     <a href="#about" class="px-6 py-3 border-b border-white/10">About</a><a href="#work" class="px-6 py-3 border-b border-white/10">Work</a><a href="#experience" class="px-6 py-3 border-b border-white/10">Experience</a><a href="#beyond" class="px-6 py-3 border-b border-white/10">Beyond code</a><a href="#contact" class="px-6 py-3 text-ember font-semibold">Get in touch</a>
   </div>
 </header>
- 
+
 <!-- HERO: muted rust instead of bright orange; glass panels sit over flat shapes -->
 <section id="top" class="relative overflow-hidden min-h-[94vh] flex flex-col justify-end">
   <div class="absolute rounded-full bg-[#D9501F] w-[26rem] h-[26rem] -top-24 right-[8%]"></div>
@@ -84,12 +94,21 @@ body{background-color:#B8341A;color:#FFFAFA;background-image:linear-gradient(rgb
   <!-- Optional portrait: images/elois.jpg -->
   <img data-par src="images/elois.jpg" alt="" onerror="this.remove()" class="absolute right-0 bottom-0 h-full w-full md:w-3/5 object-cover object-top grayscale mix-blend-multiply opacity-70">
   <div class="relative max-w-7xl mx-auto w-full px-6 pt-36 pb-10">
-    <p class="fade font-semibold text-lg md:text-xl mb-2" style="--d:.1s">Hey, I'm a</p>
-    <h1 class="font-extrabold tracking-tight leading-[.95] text-[4.2rem] sm:text-[8rem] lg:text-[12rem]"><span class="line"><span style="--d:.2s">Builder.</span></span></h1>
-    <div class="fade glass rounded-3xl p-6 mt-8 max-w-sm md:absolute md:right-6 md:top-[42%]" style="--d:.8s">
-      <p class="font-bold text-xl leading-snug">I design the interface, build what's behind it and test it for weak spots.</p>
-      <p class="mb-3 text-sm text-white/80">Forward deployed engineer at Minetech. Software engineering student at AUCA, Kigali.</p>
+    <p class="fade bub text-2xl md:text-3xl mb-1" style="--d:.1s">Hey, I'm a</p>
+    <div class="relative inline-block">
+      <h1 class="bub text-[4rem] sm:text-[7rem] lg:text-[10rem] leading-none"><span class="line"><span style="--d:.2s">Builder.</span></span></h1>
+      <!-- Graffiti arrows passing through the word -->
+      <svg class="absolute left-0 top-1/2 -translate-y-1/2 w-full overflow-visible pointer-events-none" viewBox="0 0 1000 220" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <defs><path id="a1" pathLength="1" d="M10 190C200 60 420 230 700 60M700 60L636 62M700 60L684 124"/><path id="a2" pathLength="1" d="M990 20C820 120 600 10 330 140M330 140L384 100M330 140L394 152"/></defs>
+        <g class="ar" style="--d:1.2s"><use href="#a1" stroke="#3B0F05" stroke-width="22"/><use href="#a1" stroke="#FFE600" stroke-width="11"/></g>
+        <g class="ar" style="--d:1.7s"><use href="#a2" stroke="#3B0F05" stroke-width="22"/><use href="#a2" stroke="#FFE600" stroke-width="11"/></g>
+      </svg>
     </div>
+    <div class="fade glass rounded-3xl p-6 mt-8 max-w-sm md:hidden" style="--d:.8s">
+      <p class="font-bold text-xl leading-snug">I design the interface, build what's behind it and test it for weak spots.</p>
+      <p class="mt-3 text-sm text-white/80">Forward deployed engineer at Minetech. Software engineering student at AUCA, Kigali.</p>
+    </div>
+    <div id="slot" class="hidden md:block absolute right-6 top-[50%] w-80 h-32 pointer-events-none" aria-hidden="true"></div>
     <div class="fade glass rounded-3xl mt-10 p-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm" style="--d:1s">
       <p><b class="block text-white/70">#01</b>Product and UI/UX design</p>
       <p><b class="block text-white/70">#02</b>Full-stack development</p>
@@ -98,14 +117,14 @@ body{background-color:#B8341A;color:#FFFAFA;background-image:linear-gradient(rgb
     </div>
   </div>
 </section>
- 
+
 <section class="bg-black/15 border-y border-white/25 py-8 overflow-hidden" aria-label="Tools">
   <div class="max-w-7xl mx-auto px-6 flex items-center gap-8">
     <p class="hidden md:block w-32 shrink-0 text-xs font-semibold leading-snug">Tools I build with</p>
     <div class="overflow-hidden flex-1"><div class="marq text-lg font-bold" id="mq"></div></div>
   </div>
 </section>
- 
+
 <main class="max-w-7xl mx-auto px-6">
 <section id="about" class="py-24 md:py-32">
   <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
@@ -120,7 +139,7 @@ body{background-color:#B8341A;color:#FFFAFA;background-image:linear-gradient(rgb
   <div class="cv mt-20 md:mt-28"><h2>Skills</h2>
     <div class="grid sm:grid-cols-2 gap-8 rv" id="sk"></div></div>
 </section>
- 
+
 <!-- WORK -->
 <section id="work" class="cv !pt-20"><h2>Design work</h2>
   <div>
@@ -138,34 +157,34 @@ body{background-color:#B8341A;color:#FFFAFA;background-image:linear-gradient(rgb
     <div class="grid md:grid-cols-2 gap-x-8 gap-y-12" id="dz"></div>
   </div>
 </section>
- 
+
 <section class="cv"><h2>Built with code</h2>
   <div><p class="mute max-w-xl mb-8 rv">Full-stack and automation projects. The repositories are on GitHub.</p>
     <div class="grid md:grid-cols-2 gap-x-8 gap-y-12" id="cd"></div>
     <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener" class="btn mt-10">See all projects on GitHub <i><svg class="w-4 h-4"><use href="#ar"/></svg></i></a>
   </div>
 </section>
- 
+
 <section class="cv"><h2>Email marketing</h2>
   <div class="rv max-w-xl"><h3 class="text-2xl font-bold">Campaign templates that convert</h3>
     <p class="mute mt-3 leading-relaxed">As email designer at Audax Marketing Company I built campaign templates and automated flows in Klaviyo, laid out to stay readable across devices and mail clients.</p>
     <a href="https://www.figma.com/design/J02AAtDMaqzzQmkgU48FO7/Email-Design?t=ydPU78LbDDi9xeXU-1" target="_blank" rel="noopener" class="btn mt-6">View email designs <i><svg class="w-4 h-4"><use href="#ar"/></svg></i></a></div></section>
- 
+
 <section class="cv"><h2>Security work</h2>
   <div class="rv max-w-xl"><h3 class="text-2xl font-bold">Finding weaknesses before attackers do</h3>
     <p class="mute mt-3 leading-relaxed">During my internship at Lycée de Kicukiro APADE I ran reconnaissance and vulnerability assessments with Nmap and Nikto. I found misconfigurations and exposed credentials, and wrote mitigation steps to secure the databases. I'm now studying Ethical Hacking and Cyber Security with Cisco Networking Academy.</p></div></section>
- 
-<section id="experience" class="cv"><h2>Experience</h2><div class="tl rv" id="ex"><span class="fill"></span></div></section>
- 
+
+<section id="experience" class="cv"><h2>Experience</h2><div class="tl" id="ex"><span class="fill"></span><div class="it"><div id="dock" class="dockbody md:p-6 max-w-xl"><p class="text-sm font-semibold text-ember">Present</p><h3 class="text-2xl font-bold mt-1">Forward deployed engineer</h3><p class="mute">Minetech</p><ul><li>Take software to the people who use it, working with clients to deploy and adapt it to how they operate.</li><li>Work with Figma, Claude, VS Code, PostgreSQL and PL/SQL.</li></ul></div></div></div></section>
+
 <section class="cv"><h2>Education and credentials</h2><div class="tl rv" id="ed"><span class="fill"></span></div></section>
- 
+
 <section id="beyond" class="cv"><h2>Beyond code</h2>
   <div><p class="text-xl font-semibold max-w-xl mb-10 rv">Tech is how I work. These roles are how I give back.</p>
     <div class="tl rv"><span class="fill"></span>
       <div class="it"><h3 class="text-2xl font-bold">Youth Remember Genocide coordinator</h3><p class="mute">Community leadership</p><p class="mt-3 text-white/90 max-w-xl leading-relaxed">Coordinating young people in remembrance and education activities around the Genocide against the Tutsi, so memory and learning stay alive in my generation.</p></div>
       <div class="it"><h3 class="text-2xl font-bold">ALX ambassador</h3><p class="mute">Tech community</p><p class="mt-3 text-white/90 max-w-xl leading-relaxed">Helping new learners find their way onto ALX programs and supporting peers through data analytics and virtual assistant materials.</p></div>
     </div></div></section>
- 
+
 <section class="cv"><h2>Off the clock</h2>
   <div class="rv">
     <div class="row"><h3 class="text-2xl font-bold">Basketball</h3><p>Team sport. It taught me to pass early and trust the people around me, which is most of a good code review.</p></div>
@@ -175,7 +194,7 @@ body{background-color:#B8341A;color:#FFFAFA;background-image:linear-gradient(rgb
     <div class="row"><h3 class="text-2xl font-bold">Languages</h3><p>English (fluent), Kinyarwanda (native).</p></div>
   </div></section>
 </main>
- 
+
 <footer id="contact" class="bg-black/15 border-t border-white/25 mt-10">
   <div class="max-w-7xl mx-auto px-6 pt-20 pb-10">
     <h2 class="rv text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.02] max-w-4xl">Let's build something meaningful together.</h2>
@@ -190,7 +209,12 @@ body{background-color:#B8341A;color:#FFFAFA;background-image:linear-gradient(rgb
     <p class="mt-16 pt-6 border-t border-white/20 text-sm text-white/80">&copy; <span id="yr"></span> Mutaboba Elois. Kigali, Rwanda.</p>
   </div>
 </footer>
- 
+
+<div id="card" data-s="hero" class="fade glass rounded-3xl p-6 hidden md:block absolute top-0 left-0 z-40 overflow-hidden" style="--d:.8s;will-change:transform">
+  <div class="fa"><p class="font-bold text-xl leading-snug">I design the interface, build what's behind it and test it for weak spots.</p><p class="c2 mt-3 text-sm text-white/80">Forward deployed engineer at Minetech. Software engineering student at AUCA, Kigali.</p></div>
+  <div class="fb"><p class="text-sm font-semibold text-ember">Present</p><h3 class="text-2xl font-bold mt-1">Forward deployed engineer</h3><p class="mute">Minetech</p><ul><li>Take software to the people who use it, working with clients to deploy and adapt it to how they operate.</li><li>Work with Figma, Claude, VS Code, PostgreSQL and PL/SQL.</li></ul></div>
+</div>
+
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const A='<svg class="w-4 h-4"><use href="#ar"/></svg>';
@@ -203,19 +227,18 @@ const D=[
 ['Menace','Design, NISRT hackathon','Product design used in the NISRT hackathon.','menace.jpg','#'],
 ['Email design system','Email marketing','Modular campaign templates built in Klaviyo for Audax Marketing Company.','email-design.jpg','https://www.figma.com/design/J02AAtDMaqzzQmkgU48FO7/Email-Design?t=ydPU78LbDDi9xeXU-1']];
 $('#dz').innerHTML=D.map(([t,g,d,i,h],n)=>`<div class="rv" style="--d:${n%2*.12}s"><a class="proj aspect-[4/3]" href="${h}" target="_blank" rel="noopener"><img class="shot" src="images/${i}" alt="${t}"><span class="ov"><h3>${t}</h3><p>${d}</p><b>View in Figma ${A}</b></span></a><p class="mt-4 font-bold text-lg">${t} <span class="font-medium mute">${g}</span></p></div>`).join('');
- 
+
 // CODE projects: replace "#" with each GitHub repo link.
 const C=[
 ['Stock Management System',['React.js','Node.js','Express.js','MySQL'],'Full-stack inventory platform with real-time data retrieval and CRUD operations, plus optimized SQL queries.','#'],
 ['Linzi AI',['Node.js','Twilio','WhatsApp'],'A WhatsApp chatbot that parses messages and links and tells people, in plain language, whether they look like scams.','#'],
 ['Pharmacy platform',['Frontend','Payment APIs','Testing'],'Responsive interface and payment API integration built for Bendik Pharmacy Consultancy, streamlining pharmacy registration.','#']];
 $('#cd').innerHTML=C.map(([t,s,d,h],n)=>`<div class="rv" style="--d:${n%2*.12}s"><a class="proj code aspect-[4/3]" href="${h}" target="_blank" rel="noopener"><span class="flex gap-1.5"><i class="w-2.5 h-2.5 rounded-full bg-white/40"></i><i class="w-2.5 h-2.5 rounded-full bg-white/40"></i><i class="w-2.5 h-2.5 rounded-full bg-white/40"></i></span><span><span class="block text-2xl font-extrabold mb-4">${t}</span>${s.map(x=>`<span class="t">${x}</span>`).join('')}</span><span class="ov"><h3>${t}</h3><p>${d}</p><b>View on GitHub ${A}</b></span></a></div>`).join('');
- 
+
 $('#sk').innerHTML=[['Languages and frameworks','JavaScript (ES6+), PHP, Python, React.js, Express.js, HTML5, CSS3, Tailwind CSS'],['Data and tools','PostgreSQL, PL/SQL, MySQL, Git, GitHub, Figma, Canva, VS Code, Claude'],['Security and testing','Penetration testing, vulnerability reconnaissance, Nmap, Nikto'],['Professional','Systems and requirements analysis, stakeholder communication, cross-functional collaboration, customer support']].map(([h,t])=>`<div><h3 class="font-bold mb-2">${h}</h3><p class="mute leading-relaxed">${t}</p></div>`).join('');
- 
+
 const it=(a,b,c,l)=>`<div class="it"><p class="text-sm text-ember font-semibold">${c}</p><h3 class="text-2xl font-bold mt-1">${a}</h3><p class="mute">${b}</p>${l?'<ul>'+l.map(x=>'<li>'+x+'</li>').join('')+'</ul>':''}</div>`;
 $('#ex').insertAdjacentHTML('beforeend',[
-it('Forward deployed engineer','Minetech','Present',['Take software to the people who use it, working with clients to deploy and adapt it to how they operate.','Work with Figma, Claude, VS Code, PostgreSQL and PL/SQL.']),
 it('Email designer','Audax Marketing Company, Kigali','June 2026 to September 2026',['Designed campaign email templates in Klaviyo to improve click-through rates and brand engagement.','Built automated email flows with marketing teams, with layouts that work across devices.']),
 it('Community ambassador and support agent','ALX Rwanda, Kigali','January 2026 to present',['Helped new learners with platform navigation, authentication workflows and technical troubleshooting.','Gave peer support across data analytics and virtual assistant programs.','Worked the ALX call center, guiding people through registration and enrolment.']),
 it('Junior security analyst and pentester (internship)','Lycée de Kicukiro APADE, Kigali','April 2026',['Ran reconnaissance and vulnerability assessments on institutional apps with Nmap and Nikto.','Found misconfigurations and exposed credentials and recommended fixes to secure the databases.']),
@@ -226,15 +249,15 @@ it('Advanced Diploma in Software Development','Lycée de Kicukiro APADE, Kigali'
 it('Ethical Hacking and Cyber Security','Cisco Networking Academy','March 2026 to present'),
 it('Software Engineering and Entrepreneurship Pathway','ALX Rwanda','July 2025 to March 2026'),
 it('AI Career Essentials','ALX Rwanda','January 2024 to March 2024')].join(''));
- 
+
 const T=['Figma','Claude','VS Code','PostgreSQL','PL/SQL','React','Node.js','Express','Tailwind CSS','Klaviyo','Nmap','Git'];
 $('#mq').innerHTML=T.concat(T).map(t=>`<span class="flex items-center gap-3 pr-12 whitespace-nowrap"><span class="w-3 h-3 rounded-full bg-ember"></span>${t}</span>`).join('');
 $('#yr').textContent=new Date().getFullYear();
- 
+
 const mb=$('#mb'),mm=$('#mm');
 mb.onclick=()=>{const o=mm.classList.toggle('hidden');mm.classList.toggle('flex',!o);mb.setAttribute('aria-expanded',!o)};
 $$('#mm a').forEach(a=>a.onclick=()=>{mm.classList.add('hidden');mm.classList.remove('flex')});
- 
+
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.1});
 $$('.rv').forEach(el=>io.observe(el));
 const calm=matchMedia('(prefers-reduced-motion: reduce)').matches,par=$('[data-par]'),bar=$('#bar'),tls=[...$$('.tl')];
@@ -244,13 +267,30 @@ if(par&&!calm&&y<innerHeight)par.style.transform='translateY('+y*.18+'px)';
 tls.forEach(t=>{const r=t.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.7-r.top)/r.height));t.querySelector('.fill').style.transform='scaleY('+p+')'})}
 let q=false;addEventListener('scroll',()=>{if(!q){q=true;requestAnimationFrame(()=>{tick();q=false})}},{passive:true});
 addEventListener('resize',tick);tick();
+
+// Floating card: follows your scroll, then docks into the Experience timeline
+const card=$('#card'),slot=$('#slot'),dock=$('#dock'),wide=matchMedia('(min-width:768px)');
+let c=null,run=false;
+function target(){
+  const sr=slot.getBoundingClientRect(),dr=dock.getBoundingClientRect(),y=scrollY,
+  sx=sr.left+scrollX,sy=sr.top+y,dx=dr.left+scrollX,dy=dr.top+y,fy=y+112;
+  if(fy>=dy)return{s:'dock',x:dx,y:dy,w:dr.width};
+  if(fy>sy+8)return{s:'float',x:sx+sr.width-250,y:fy,w:250};
+  return{s:'hero',x:sx,y:sy,w:sr.width};
+}
+function move(){
+  if(!wide.matches){run=false;return}
+  const t=target(),k=calm?1:.16;
+  if(!c)c={x:t.x,y:t.y,w:t.w};
+  c.x+=(t.x-c.x)*k;c.y+=(t.y-c.y)*k;c.w+=(t.w-c.w)*k;
+  const s=t.s==='dock'&&Math.abs(c.y-t.y)>60?'float':t.s;
+  if(card.dataset.s!==s)card.dataset.s=s;
+  card.style.transform='translate3d('+c.x+'px,'+c.y+'px,0)';card.style.width=c.w+'px';
+  if(Math.abs(t.x-c.x)+Math.abs(t.y-c.y)+Math.abs(t.w-c.w)>1)requestAnimationFrame(move);else run=false;
+}
+function go(){if(!run){run=true;requestAnimationFrame(move)}}
+wide.onchange=()=>{c=null;go()};
+addEventListener('scroll',go,{passive:true});addEventListener('resize',go);addEventListener('load',go);go();
 </script>
 </body>
 </html>
- 
-
-
-
-
-
-Claude finished the response
